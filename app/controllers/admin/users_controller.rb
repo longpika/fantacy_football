@@ -22,10 +22,14 @@ module Admin
       @user = User.create(user_params)
     end
 
+    def edit
+      @user = User.find_by_id(params[:id])
+    end
+
     private
 
     def user_params
-      params.require(:user).permit(:email, :password, :encrypted_password, :reset_password_token)
+      params.require(:user).permit(:email, :password, :first_name, :last_name)
     end
   end
 end
