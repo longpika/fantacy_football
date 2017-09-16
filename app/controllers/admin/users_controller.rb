@@ -17,5 +17,15 @@ module Admin
 
     # See https://administrate-prototype.herokuapp.com/customizing_controller_actions
     # for more information
+
+    def create
+      @user = User.create(user_params)
+    end
+
+    private
+
+    def user_params
+      params.require(:user).permit(:email, :password, :encrypted_password, :reset_password_token)
+    end
   end
 end

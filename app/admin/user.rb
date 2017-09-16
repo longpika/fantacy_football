@@ -1,4 +1,5 @@
 ActiveAdmin.register User do
+  form :partial => "form"
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
@@ -11,5 +12,28 @@ ActiveAdmin.register User do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
+  form do |f|
+    f.inputs "Detail" do
+      f.input :email
+      f.input :password, as: :password
+      f.input :first_name
+      f.input :last_name
+      f.actions
+    end
+  end
+
+  index do
+    column :id
+    column :email
+    column :first_name
+    column :last_name
+    column :created_at
+  end
+
+  permit_params do
+    permitted = [:email, :password, :encrypted_password]
+    # permitted << :other if params[:action] == 'create' && current_user.admin?
+    permitted
+  end
 
 end
