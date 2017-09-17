@@ -13,7 +13,7 @@ ActiveAdmin.register User do
 #   permitted
 # end
   form do |f|
-    f.inputs "Detail" do
+    f.inputs "User Detail" do
       f.input :email
       f.input :password, as: :password
       f.input :first_name

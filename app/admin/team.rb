@@ -16,17 +16,19 @@ ActiveAdmin.register Team do
     permitted = [
       :name,
       team_players_attributes: [
-        :player_id
+        :player_id, :_destroy
       ]
     ]
     permitted
   end
 
   form do |f|
-    f.inputs "Detail" do
+    f.inputs "Team Detail" do
       f.input :name
-      f.has_many :team_players do |ftp|
-        ftp.select :player_id, User.all.collect{|x| [x.full_name, x.id]}
+      f.inputs "Player Detail" do
+        f.has_many :team_players do |ftp|
+          ftp.select :player_id, User.all.collect{|x| [x.full_name, x.id]}
+        end
       end
       f.actions
     end
