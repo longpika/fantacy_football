@@ -45,9 +45,11 @@ ActiveAdmin.register Match do
         mf.inputs "Match Result" do
           mf.has_many :games, allow_destroy: true do |g|
             g.input :winner_team_id, :label => 'Winner Team', :as => :select,
-              :collection => mf.object.teams.collect{|x| [x.name, x.id]}
+              :collection => mf.object.teams.collect{|x| [x.name, x.id]},
+              selected: "Select Winner Team"
             g.input :score, :label => 'Score', :as => :select,
-              :collection => (1..10).collect{|x| [x, x]}
+              :collection => (1..10).collect{|x| [x, x]},
+              selected: "Select Score"
           end
         end
       end
