@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  winner_team_id: 1
+  loser_team_id: 1
+  match_id: 1
+
+two:
+  name: MyString
+  winner_team_id: 1
+  loser_team_id: 1
+  match_id: 1
