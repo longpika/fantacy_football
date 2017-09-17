@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170917080129) do
+ActiveRecord::Schema.define(version: 20170917114717) do
 
   create_table "active_admin_comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "namespace"
@@ -29,7 +29,6 @@ ActiveRecord::Schema.define(version: 20170917080129) do
   create_table "games", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.integer "winner_team_id"
-    t.integer "loser_team_id"
     t.integer "match_id"
     t.integer "score"
     t.datetime "created_at", null: false
@@ -47,7 +46,7 @@ ActiveRecord::Schema.define(version: 20170917080129) do
 
   create_table "team_in_games", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "team_id"
-    t.integer "game_id"
+    t.integer "match_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -61,6 +60,7 @@ ActiveRecord::Schema.define(version: 20170917080129) do
 
   create_table "teams", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
+    t.decimal "ranking", precision: 10, scale: 2, default: "0.0"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

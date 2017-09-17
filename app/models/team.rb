@@ -3,8 +3,9 @@ class Team < ApplicationRecord
   has_many :players, through: :team_players
 
   has_many :team_in_games, dependent: :destroy
-  has_many :games, through: :team_in_games
+  has_many :matches, through: :team_in_games
   has_many :games, foreign_key: :winner_team_id
+  has_many :games, foreign_key: :loser_team_id
 
   validate do
     check_player_number

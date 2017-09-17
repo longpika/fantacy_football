@@ -16,7 +16,10 @@ ActiveAdmin.register Match do
     permitted = [
       :name,
       games_attributes: [
-        :id, :name, :_destroy
+        :id, :name, :winner_team_id, :score, :_destroy
+      ],
+      team_in_games_attributes: [
+        :id, :team_id, :_destroy
       ]
     ]
     permitted
@@ -25,10 +28,27 @@ ActiveAdmin.register Match do
   form do |mf|
     mf.semantic_errors *mf.object.errors.keys
     mf.inputs "Match Detail" do
+      mf.hidden_field :id
       mf.input :name
       mf.inputs "Game Detail" do
         mf.has_many :games, allow_destroy: true do |g|
           g.input :name
+        end
+      end
+      mf.inputs "Teams Detail" do
+        mf.has_many :team_in_games, allow_destroy: true do |g, index|
+          g.input :team_id, :label => "Team #{index}", :as => :select,
+            :collection => Team.all.collect{|x| [x.name, x.id]}
+        end
+      end
+      if mf.object.id
+        mf.inputs "Match Result" do
+          mf.has_many :games, allow_destroy: true do |g|
+            g.input :winner_team_id, :label => 'Winner Team', :as => :select,
+              :collection => mf.object.teams.collect{|x| [x.name, x.id]}
+            g.input :score, :label => 'Score', :as => :select,
+              :collection => (1..10).collect{|x| [x, x]}
+          end
         end
       end
       mf.actions
@@ -37,14 +57,13 @@ ActiveAdmin.register Match do
 
   show do |f|
     panel "Match Details" do
-      attributes_table_for f, :id, :name
+      attributes_table_for f, :id, :name, :winner_team
     end
 
     panel "List Games" do
       table_for(f.games) do |game|
         column :name
         column :winner_team
-        column :loser_team
         column :score
       end
     end

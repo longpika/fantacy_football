@@ -35,4 +35,14 @@ ActiveAdmin.register Team do
     end
   end
 
+  index do
+    column :id
+    column :name
+    column :ranking do |r|
+      r.ranking.to_f
+    end
+    column :created_at
+    actions
+  end
+
 end
