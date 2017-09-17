@@ -16,13 +16,14 @@ ActiveAdmin.register Team do
     permitted = [
       :name,
       team_players_attributes: [
-        :player_id, :_destroy
+        :id, :player_id, :_destroy
       ]
     ]
     permitted
   end
 
   form do |f|
+    f.semantic_errors *f.object.errors.keys
     f.inputs "Team Detail" do
       f.input :name
       f.inputs "Player Detail" do
