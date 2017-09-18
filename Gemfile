@@ -33,6 +33,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'activeadmin'
+ruby '2.4.0'
 
 # Plus integrations with:
 gem 'devise'
@@ -43,7 +44,8 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '~> 2.13'
+  gem 'capybara', '~> 2.15', '>= 2.15.1'
+  gem 'rspec-rails', '~> 3.6', '>= 3.6.1'
   gem 'selenium-webdriver'
   gem 'listen', '>= 3.0.5', '< 3.2'
 end
