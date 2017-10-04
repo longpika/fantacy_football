@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'sinatra', '~> 2.0'
-
+gem 'mini_portile2', '~> 2.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.3'

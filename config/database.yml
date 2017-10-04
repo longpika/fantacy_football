@@ -48,7 +48,7 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
+  adapter: postgresql
   database: fantasy_football_production
   username: fantasy_football
   password: <%= ENV['FANTASY_FOOTBALL_DATABASE_PASSWORD'] %>
