@@ -33,7 +33,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'activeadmin'
-ruby '2.4.0'
+ruby '2.3.1'
 
 # Plus integrations with:
 gem 'devise'
