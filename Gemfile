@@ -4,9 +4,9 @@ git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
-gem "administrate", github: "thoughtbot/administrate"
-gem 'sinatra', '~> 2.0'
-gem 'mini_portile2', '~> 2.3'
+
+gem 'sinatra', '1.0'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.3'
@@ -35,6 +35,10 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'activeadmin'
+gem "administrate", github: "thoughtbot/administrate"
+gem 'sinatra', '~> 2.0'
+gem 'mini_portile2', '~> 2.3'
+ruby '2.4.0'
 
 # Plus integrations with:
 gem 'devise'
