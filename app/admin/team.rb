@@ -29,8 +29,7 @@ ActiveAdmin.register Team do
       f.inputs "Player Detail" do
         f.has_many :team_players, allow_destroy: true do |ftp, index|
           ftp.input :player_id, :label => "Player #{index}", :as => :select,
-            :collection => User.all.collect{|x| [x.full_name, x.id]},
-            selected: "Select Score"
+            :collection => User.all.collect{|x| [x.full_name, x.id]}
         end
       end
       f.actions

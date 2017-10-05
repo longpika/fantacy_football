@@ -39,7 +39,7 @@ gem 'activeadmin'
 gem "administrate", github: "thoughtbot/administrate"
 gem 'sinatra', '~> 2.0'
 gem 'mini_portile2', '~> 2.3'
-ruby '2.4.0'
+ruby '2.3.1'
 
 # Plus integrations with:
 gem 'devise'

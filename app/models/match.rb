@@ -24,7 +24,7 @@ class Match < ApplicationRecord
 
   def updating_match_result_and_team_ranking
     matches = Match.joins(:games, :team_in_games)
-    match = matches.find_by_id(self.id)
+    match = matches.find_by_id(id)
     return unless match
     teams = match.teams.uniq
     return if teams.length != 2
@@ -35,7 +35,7 @@ class Match < ApplicationRecord
     first_team_id = team_ids[0]
     team_ids.count(first_team_id) >= 2 ?
       flag = match.update_attribute(:winner_team_id, first_team_id) :
-        flag = match.update_attribute(:winner_team_id, team_ids[1])
+        flag = match.update_attribute(:winner_team_id, '')
     errors[:base] << "Errors Appears" unless flag
     teams.each do |team|
       total_win_matches = Match.where(winner_team_id: team.id).length
