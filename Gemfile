@@ -39,7 +39,7 @@ gem 'activeadmin'
 gem "administrate", github: "thoughtbot/administrate"
 gem 'sinatra', '~> 2.0'
 gem 'mini_portile2', '~> 2.3'
-ruby '2.3.1'
+# ruby '2.3.1'
 
 # Plus integrations with:
 gem 'devise'
@@ -69,6 +69,12 @@ group :production do
   gem 'rails_12factor'
   gem 'pg', '~> 0.21.0'
   gem 'thin'
+end
+
+group :test do
+  gem 'factory_girl', '~> 4.8', '>= 4.8.1'
+  gem 'faker', '~> 1.8', '>= 1.8.4'
+  gem 'shoulda-matchers', '~> 3.1', '>= 3.1.2'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
